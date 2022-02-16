@@ -1,11 +1,9 @@
 Rails.application.routes.draw do
-
+  root to: 'homes#top'
   devise_for :users
-  get 'lists/new'
-  get 'lists/index'
-  get 'lists/show'
-  get 'lists/edit'
+  
+  resources :post_images, only: [:new, :index, :show]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: "homes#top"
-  get 'homes/about' => 'homes#about', as: 'about'
+  
+  get "/homes/about" => "homes#about", as: "about"
 end
